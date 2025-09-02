@@ -1,20 +1,22 @@
+import cors from "cors";
 import { initTRPC } from "@trpc/server";
 import * as trpcExpress from "@trpc/server/adapters/express";
 import express from "express";
 import UserRouter from "@repo/user-management";
 
-const createContext = ({
-  req,
-  res,
-}: trpcExpress.CreateExpressContextOptions) => ({}); // no context
+const createContext = () => ({}); // no context
 type Context = Awaited<ReturnType<typeof createContext>>;
 
 
 const t = initTRPC.context<Context>().create();
 
-const appRouter = t.mergeRouters(UserRouter);
+const appRouter = t.router({
+  user: UserRouter,
+});
 
 const app = express();
+
+app.use(cors());
 
 app.use(
   "/trpc",
@@ -24,7 +26,8 @@ app.use(
   })
 );
 
-app.get("/health", (req, res) => {
+
+app.get("/health", (_, res) => {
   return res.json({
     status: "ok",
   });

@@ -1,6 +1,10 @@
+"use client";
+
 import Image, { type ImageProps } from "next/image";
 import { Button } from "@repo/ui/button";
 import styles from "./page.module.css";
+import { useTRPC } from "../utils/trpc";
+import { useQuery } from "@tanstack/react-query";
 
 type Props = Omit<ImageProps, "src"> & {
   srcLight: string;
@@ -19,6 +23,10 @@ const ThemeImage = (props: Props) => {
 };
 
 export default function Home() {
+  const trpc = useTRPC();
+  const { data } = useQuery(trpc.user.getById.queryOptions('ok'))
+  console.log(data);
+
   return (
     <div className={styles.page}>
       <main className={styles.main}>

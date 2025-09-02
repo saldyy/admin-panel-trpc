@@ -7,7 +7,7 @@
     ".": "./src/index.ts"
   },
   "scripts": {
-    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "dev": "ts-node-dev --respawn --transpile-only --watch src,../../packages/user-management/src src/index.ts",
     "check-types": "tsc --noEmit"
   },
   "keywords": [],
@@ -17,5 +17,8 @@
     "@trpc/server": "^11.5.0",
     "zod": "^4.1.1",
     "@repo/db": "workspace:*"
+  },
+  "devDependencies": {
+    "@repo/typescript-config": "workspace:*"
   }
 }

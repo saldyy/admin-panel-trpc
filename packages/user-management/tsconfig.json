@@ -1,10 +1,5 @@
 {
   "extends": "@repo/typescript-config/server.json",
-  "compilerOptions": {
-    "paths": {
-      "@repo/user-management": ["packages/user-management/src/index.ts"] 
-    }
-  },
   "include": [
     "**/*.ts",
   ],
