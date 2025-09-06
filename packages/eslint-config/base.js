@@ -19,7 +19,15 @@ export const config = [
     },
     rules: {
       "turbo/no-undeclared-env-vars": "warn",
-      quotes: ["error", "double"]
+      "no-unused-vars": "error",
+      quotes: ["error", "double"],
+      "sort-imports": ["error", {
+        "ignoreCase": false,
+        "ignoreDeclarationSort": false,
+        "ignoreMemberSort": false,
+        "memberSyntaxSortOrder": ["none", "all", "multiple", "single"],
+        "allowSeparatedGroups": false
+      }]
     },
   },
   {

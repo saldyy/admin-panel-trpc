@@ -29,7 +29,7 @@ function getQueryClient() {
     return browserQueryClient;
   }
 }
-export function Providers({ children }: { children: React.ReactNode }) {
+export function QueryProviders({ children }: { children: React.ReactNode }) {
   const queryClient = getQueryClient();
   const [trpcClient] = useState(() =>
     createTRPCClient<AppRouter>({
